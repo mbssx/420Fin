@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link, Router } from 'react-router';
+
+// Import Style
+import styles from '.../../modules/App/components/Header/Header.css';
 
 // Import Components
 import PostList from '../../components/PostList';
@@ -14,10 +18,14 @@ import { toggleAddPost } from '../../../App/AppActions';
 import { getShowAddPost } from '../../../App/AppReducer';
 import { getPosts } from '../../PostReducer';
 
+
+
 class PostListPage extends Component {
   componentDidMount() {
     this.props.dispatch(fetchPosts());
   }
+  
+
 
   handleDeletePost = post => {
     if (confirm('Do you want to delete this post')) { // eslint-disable-line
@@ -30,9 +38,17 @@ class PostListPage extends Component {
     this.props.dispatch(addPostRequest({ name, title, content }));
   };
 
-  render() {
+  
+  render(props, context) {
+    
     return (
+      
       <div>
+        {
+          (context && context.router.isActive('/', true))
+          ? <a className={styles['add-post-button']} href="#" onClick={props.toggleAddPost}><FormattedMessage id="addPost" /></a>
+          : null
+        } 
         <PostCreateWidget addPost={this.handleAddPost} showAddPost={this.props.showAddPost} />
         <PostList handleDeletePost={this.handleDeletePost} posts={this.props.posts} />
       </div>
@@ -64,5 +80,7 @@ PostListPage.propTypes = {
 PostListPage.contextTypes = {
   router: PropTypes.object,
 };
+
+
 
 export default connect(mapStateToProps)(PostListPage);

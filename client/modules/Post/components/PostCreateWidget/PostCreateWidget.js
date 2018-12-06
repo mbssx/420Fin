@@ -38,4 +38,10 @@ PostCreateWidget.propTypes = {
   intl: intlShape.isRequired,
 };
 
+// <script>
+//    $(document).ready(function() {
+//        $('#summernote').summernote();
+//    });
+//</script>
+
 export default injectIntl(PostCreateWidget);

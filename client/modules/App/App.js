@@ -54,13 +54,17 @@ export class App extends Component {
               },
             ]}
           />
-          <Header
-            switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}
-            intl={this.props.intl}
-            toggleAddPost={this.toggleAddPostSection}
-          />
-          <div className={styles.container}>
-            {this.props.children}
+          <div className="container">
+            <Header
+              switchLanguage={lang => this.props.dispatch(switchLanguage(lang))}
+              intl={this.props.intl}
+              toggleAddPost={this.toggleAddPostSection}
+            />
+          </div>
+          <div className="container.style">
+              <div className="card  grey lighten-5">
+                  {this.props.children}
+            </div>
           </div>
           <Footer />
         </div>

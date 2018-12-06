@@ -1,9 +1,3 @@
-.header {
-  background: #eee url('../../header-bk.png') center;
-  background-size: cover;
-  border-bottom: 1px solid #ccc;
-}
-
 .content {
   width: 100%;
   max-width: 980px;
